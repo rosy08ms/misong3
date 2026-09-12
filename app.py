@@ -52,7 +52,7 @@ with tab1:
             </div>
             """, unsafe_allow_html=True)
             
-            st.write("윗글을 요약하여 정리한 아래 표의 각 항목에 빈칸에 들어갈 내용을 바로 입력하시오.")
+            st.write("윗글을 요약하여 정리한 아래 항목별 빈칸에 들어갈 내용을 바로 입력하시오.")
             
             st.markdown("""
             <div class="gray-box">
@@ -62,7 +62,6 @@ with tab1:
             </div>
             """, unsafe_allow_html=True)
             
-            # 1번 문제와 답안 입력란 배치
             col1, col2 = st.columns([1, 1])
             with col1:
                 st.markdown("**[문제 1] 쉬운 과제**<br>과제 특성 및 효율적 방식:", unsafe_allow_html=True)
@@ -71,7 +70,6 @@ with tab1:
 
             st.write("")
 
-            # 2번 문제와 답안 입력란 배치
             col1, col2 = st.columns([1, 1])
             with col1:
                 st.markdown("**[문제 2] 추천 장소**<br>쉬운 과제 추천 장소/환경:", unsafe_allow_html=True)
@@ -80,7 +78,6 @@ with tab1:
 
             st.write("")
 
-            # 3번 문제와 답안 입력란 배치
             col1, col2 = st.columns([1, 1])
             with col1:
                 st.markdown("**[문제 3] 어려운 과제**<br>과제 특성 및 집중 방식:", unsafe_allow_html=True)
@@ -475,7 +472,7 @@ with tab2:
             "모든 문제를 제출하면 복습할 내용 탭에서 틀린 개념을 확인할 수 있어요. "
             "답안을 초기화하고 처음부터 다시 풀고 싶다면 다음의 버튼을 누르세요."
             "</span>", 
-            unsafe_allow_html=Type:=str
+            unsafe_allow_html=True
         )
     with col_btn:
         if st.button("처음부터 다시 풀기", type="primary"):
