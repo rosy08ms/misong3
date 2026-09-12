@@ -52,16 +52,7 @@ with tab1:
             </div>
             """, unsafe_allow_html=True)
             
-            st.write("윗글을 요약하여 정리한 아래 표의 빈칸 (1), (2), (3)에 들어갈 내용을 각각 쓰시오.")
-            
-            # 요약 표 시각화 추가
-            st.markdown("""
-            | 과제 난이도 | 학습 환경 및 방법 | 관련 심리학 용어 |
-            | :--- | :--- | :--- |
-            | 쉬운 과제 | (1) | 사회적 촉진 |
-            | 쉬운 과제 추천 장소 | (2) | - |
-            | 어려운 과제 | (3) | 사회적 억제 |
-            """)
+            st.write("윗글을 요약하여 정리한 아래 표의 각 항목에 빈칸에 들어갈 내용을 바로 입력하시오.")
             
             st.markdown("""
             <div class="gray-box">
@@ -71,9 +62,30 @@ with tab1:
             </div>
             """, unsafe_allow_html=True)
             
-            ans_1 = st.text_input("ans1", placeholder="(1) 항목 답안 입력", label_visibility="collapsed")
-            ans_2 = st.text_input("ans2", placeholder="(2) 항목 답안 입력", label_visibility="collapsed")
-            ans_3 = st.text_input("ans3", placeholder="(3) 항목 답안 입력", label_visibility="collapsed")
+            # 1번 문제와 답안 입력란 배치
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.markdown("**[문제 1] 쉬운 과제**<br>과제 특성 및 효율적 방식:", unsafe_allow_html=True)
+            with col2:
+                ans_1 = st.text_input("ans1", placeholder="(1) 답안 입력", label_visibility="collapsed")
+
+            st.write("")
+
+            # 2번 문제와 답안 입력란 배치
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.markdown("**[문제 2] 추천 장소**<br>쉬운 과제 추천 장소/환경:", unsafe_allow_html=True)
+            with col2:
+                ans_2 = st.text_input("ans2", placeholder="(2) 답안 입력", label_visibility="collapsed")
+
+            st.write("")
+
+            # 3번 문제와 답안 입력란 배치
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.markdown("**[문제 3] 어려운 과제**<br>과제 특성 및 집중 방식:", unsafe_allow_html=True)
+            with col2:
+                ans_3 = st.text_input("ans3", placeholder="(3) 답안 입력", label_visibility="collapsed")
             
         elif "서논술형 2" in question_choice:
             st.markdown("""
@@ -82,7 +94,7 @@ with tab1:
             과제의 특성과 난이도에 따라 우리의 학습 효율을 높이는 방법은 다르게 적용되어야 한다. (이하 생략)
             </div>
             """, unsafe_allow_html=True)
-            st.write("윗글을 활용하여 과제 난이도에 따른 효율적인 학습 전략에 대한 설명문을 작성하려 한다. 주어진 첫 문장에 이어지는 내용을 조건에 맞추어 작성하시오.")
+            st.write("윗글을 활용하여 과제 난이도에 따른 효율적인 학습 전략에 대한 설명문을 작성하려 한다. 각 문항별로 조건에 맞는 내용을 바로 작성하시오.")
             st.markdown("""
             <div class="gray-box">
             <b>[채점 조건]</b><br>
@@ -92,8 +104,20 @@ with tab1:
             🔍 개념 설명만 있고 요구한 결론이 누락된 경우 오답 처리함
             </div>
             """, unsafe_allow_html=True)
-            sub_ans_1 = st.text_area("sub1", placeholder="(1) 문장 입력", label_visibility="collapsed")
-            sub_ans_2 = st.text_area("sub2", placeholder="(2) 문장 입력", label_visibility="collapsed")
+            
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.markdown("**[문제 1]** 쉬운 과제와 사회적 촉진 설명 문장", unsafe_allow_html=True)
+            with col2:
+                sub_ans_1 = st.text_area("sub1", placeholder="(1) 문장 입력", label_visibility="collapsed")
+
+            st.write("")
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.markdown("**[문제 2]** 어려운 과제와 사회적 억제 설명 문장", unsafe_allow_html=True)
+            with col2:
+                sub_ans_2 = st.text_area("sub2", placeholder="(2) 문장 입력", label_visibility="collapsed")
+                
         else:
             st.markdown("""
             <div class="blue-box">
@@ -101,7 +125,7 @@ with tab1:
             [영상 기획안 주제: 사회적 촉진과 억제를 활용한 스마트한 공부법]
             </div>
             """, unsafe_allow_html=True)
-            st.write("윗글을 바탕으로 상황에 맞는 학습 공간 선택법을 설명하는 영상을 제작하려 한다. 기획안의 빈칸에 알맞은 연출 계획과 효과를 서술하시오.")
+            st.write("윗글을 바탕으로 상황에 맞는 학습 공간 선택법을 설명하는 영상을 제작하려 한다. 각 문항별 연출 계획과 효과를 바로 서술하시오.")
             st.markdown("""
             <div class="gray-box">
             <b>[채점 조건]</b><br>
@@ -110,8 +134,19 @@ with tab1:
             🔍 요소 A(연출)와 요소 B(효과)가 실질적으로 연결되지 않으면 오답 처리함
             </div>
             """, unsafe_allow_html=True)
-            sub_ans_1 = st.text_area("sub1", placeholder="(1) 시각 요소(요소 A) 및 연출/효과(요소 B) 입력", label_visibility="collapsed")
-            sub_ans_2 = st.text_area("sub2", placeholder="(2) 청각 요소(요소 A) 및 연출/효과(요소 B) 입력", label_visibility="collapsed")
+            
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.markdown("**[문제 1]** 시각 요소(요소 A) 및 연출/효과(요소 B)", unsafe_allow_html=True)
+            with col2:
+                sub_ans_1 = st.text_area("sub1", placeholder="(1) 답안 입력", label_visibility="collapsed")
+
+            st.write("")
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.markdown("**[문제 2]** 청각 요소(요소 A) 및 연출/효과(요소 B)", unsafe_allow_html=True)
+            with col2:
+                sub_ans_2 = st.text_area("sub2", placeholder="(2) 답안 입력", label_visibility="collapsed")
 
     elif "2세트" in set_choice:
         if "서논술형 1" in question_choice:
@@ -121,25 +156,34 @@ with tab1:
             실생활 전기는 '흐르는 물'이라면 정전기는 '높은 곳에 고여 있는 물'이다. 전하가 이동하지 않고 머물러 있어 위험하지 않다.
             </div>
             """, unsafe_allow_html=True)
-            st.write("윗글을 요약하여 정리한 아래 표의 빈칸 (1), (2), (3)에 들어갈 내용을 각각 쓰시오.")
-            
-            st.markdown("""
-            | 구분 | 실생활 전기 | 정전기 |
-            | :--- | :--- | :--- |
-            | 비유적 표현 | 흐르는 물 | (1) |
-            | 전하의 상태 | 이동함 | (2) |
-            | 위험성 | 위험함 | (3) |
-            """)
-            
+            st.write("윗글을 요약하여 정리한 아래 항목별 빈칸에 알맞은 내용을 바로 입력하시오.")
             st.markdown("""
             <div class="gray-box">
             <b>[채점 조건]</b><br>
             📌 물의 상태, 전하의 상태, 위험성 여부가 정확히 대응되어야 함
             </div>
             """, unsafe_allow_html=True)
-            ans_1 = st.text_input("ans1", placeholder="(1) 항목 답안 입력", label_visibility="collapsed")
-            ans_2 = st.text_input("ans2", placeholder="(2) 항목 답안 입력", label_visibility="collapsed")
-            ans_3 = st.text_input("ans3", placeholder="(3) 항목 답안 입력", label_visibility="collapsed")
+            
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.markdown("**[문제 1] 비유적 표현**<br>정전기의 비유적 표현:", unsafe_allow_html=True)
+            with col2:
+                ans_1 = st.text_input("ans1", placeholder="(1) 답안 입력", label_visibility="collapsed")
+
+            st.write("")
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.markdown("**[문제 2] 전하의 상태**<br>정전기 전하의 상태:", unsafe_allow_html=True)
+            with col2:
+                ans_2 = st.text_input("ans2", placeholder="(2) 답안 입력", label_visibility="collapsed")
+
+            st.write("")
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.markdown("**[문제 3] 위험성**<br>정전기의 위험성 여부:", unsafe_allow_html=True)
+            with col2:
+                ans_3 = st.text_input("ans3", placeholder="(3) 답안 입력", label_visibility="collapsed")
+                
         elif "서논술형 2" in question_choice:
             st.markdown("""
             <div class="blue-box">
@@ -147,7 +191,7 @@ with tab1:
             겨울철에 흔히 겪는 정전기는 우리가 평소 집에서 사용하는 전기와는 다른 뚜렷한 특징이 있다.
             </div>
             """, unsafe_allow_html=True)
-            st.write("윗글을 활용하여 정전기의 특징에 대한 설명문을 작성하려 한다. 주어진 첫 문장에 이어지는 내용을 조건에 맞추어 작성하시오.")
+            st.write("윗글을 활용하여 정전기의 특징에 대한 설명문을 작성하려 한다. 각 문항별로 조건에 맞게 작성하시오.")
             st.markdown("""
             <div class="gray-box">
             <b>[채점 조건]</b><br>
@@ -156,8 +200,19 @@ with tab1:
             🔍 개념 설명만 있고 결론이 누락된 경우 오답 처리함
             </div>
             """, unsafe_allow_html=True)
-            sub_ans_1 = st.text_area("sub1", placeholder="(1) 문장 입력", label_visibility="collapsed")
-            sub_ans_2 = st.text_area("sub2", placeholder="(2) 문장 입력", label_visibility="collapsed")
+            
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.markdown("**[문제 1]** 정전기의 개념 및 비유 설명 문장", unsafe_allow_html=True)
+            with col2:
+                sub_ans_1 = st.text_area("sub1", placeholder="(1) 문장 입력", label_visibility="collapsed")
+
+            st.write("")
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.markdown("**[문제 2]** 정전기의 안전성 관련 결론 문장", unsafe_allow_html=True)
+            with col2:
+                sub_ans_2 = st.text_area("sub2", placeholder="(2) 문장 입력", label_visibility="collapsed")
         else:
             st.markdown("""
             <div class="blue-box">
@@ -165,7 +220,7 @@ with tab1:
             [영상 기획안 주제: 전압은 높지만 위험하지 않은 정전기의 비밀]
             </div>
             """, unsafe_allow_html=True)
-            st.write("윗글을 바탕으로 정전기의 특징을 설명하는 영상을 제작하려 한다. 기획안의 빈칸에 알맞은 연출 계획과 효과를 서술하시오.")
+            st.write("윗글을 바탕으로 정전기의 특징을 설명하는 영상을 제작하려 한다. 각 문항별 연출 계획과 효과를 바로 서술하시오.")
             st.markdown("""
             <div class="gray-box">
             <b>[채점 조건]</b><br>
@@ -174,8 +229,19 @@ with tab1:
             🔍 요소 A와 요소 B가 실질적으로 연결되지 않으면 오답 처리함
             </div>
             """, unsafe_allow_html=True)
-            sub_ans_1 = st.text_area("sub1", placeholder="(1) 시각 요소(요소 A) 및 연출/효과(요소 B) 입력", label_visibility="collapsed")
-            sub_ans_2 = st.text_area("sub2", placeholder="(2) 청각 요소(요소 A) 및 연출/효과(요소 B) 입력", label_visibility="collapsed")
+            
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.markdown("**[문제 1]** 시각 요소(요소 A) 및 연출/효과(요소 B)", unsafe_allow_html=True)
+            with col2:
+                sub_ans_1 = st.text_area("sub1", placeholder="(1) 답안 입력", label_visibility="collapsed")
+
+            st.write("")
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.markdown("**[문제 2]** 청각 요소(요소 A) 및 연출/효과(요소 B)", unsafe_allow_html=True)
+            with col2:
+                sub_ans_2 = st.text_area("sub2", placeholder="(2) 답안 입력", label_visibility="collapsed")
 
     else:
         if "서논술형 1" in question_choice:
@@ -185,25 +251,34 @@ with tab1:
             「에드몽 드 벨라미」는 14~20세기 초상화 1만 5,000점을 토대로 알고리즘과 데이터를 사용해 그려졌다. 예술적 가치와 범주 확장에 기여함.
             </div>
             """, unsafe_allow_html=True)
-            st.write("윗글을 요약하여 정리한 아래 표의 빈칸 (1), (2), (3)에 들어갈 내용을 각각 쓰시오.")
-            
-            st.markdown("""
-            | 분석 항목 | 내용 요약 |
-            | :--- | :--- |
-            | 제작 방식 | (1) |
-            | 예술성 판단 | (2) |
-            | 의의 및 가치 | (3) |
-            """)
-            
+            st.write("윗글을 요약하여 정리한 아래 항목별 빈칸에 알맞은 내용을 바로 입력하시오.")
             st.markdown("""
             <div class="gray-box">
             <b>[채점 조건]</b><br>
             📌 제작 방식, 예술성 판단 근거, 가치가 명확히 드러나야 함
             </div>
             """, unsafe_allow_html=True)
-            ans_1 = st.text_input("ans1", placeholder="(1) 항목 답안 입력", label_visibility="collapsed")
-            ans_2 = st.text_input("ans2", placeholder="(2) 항목 답안 입력", label_visibility="collapsed")
-            ans_3 = st.text_input("ans3", placeholder="(3) 항목 답안 입력", label_visibility="collapsed")
+            
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.markdown("**[문제 1] 제작 방식**<br>AI 그림의 제작 방식:", unsafe_allow_html=True)
+            with col2:
+                ans_1 = st.text_input("ans1", placeholder="(1) 답안 입력", label_visibility="collapsed")
+
+            st.write("")
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.markdown("**[문제 2] 예술성 판단**<br>예술성 판단 근거:", unsafe_allow_html=True)
+            with col2:
+                ans_2 = st.text_input("ans2", placeholder="(2) 답안 입력", label_visibility="collapsed")
+
+            st.write("")
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.markdown("**[문제 3] 의의 및 가치**<br>작품의 의의 및 가치:", unsafe_allow_html=True)
+            with col2:
+                ans_3 = st.text_input("ans3", placeholder="(3) 답안 입력", label_visibility="collapsed")
+                
         elif "서논술형 2" in question_choice:
             st.markdown("""
             <div class="blue-box">
@@ -211,7 +286,7 @@ with tab1:
             인공 지능이 그린 그림이 늘어나는 요즘, 우리는 이 작품들을 어떤 눈으로 바라봐야 할지 올바르게 생각해야 한다.
             </div>
             """, unsafe_allow_html=True)
-            st.write("윗글을 활용하여 인공 지능이 그린 그림을 바라보는 시각에 대한 설명문을 작성하려 한다. 조건에 맞추어 작성하시오.")
+            st.write("윗글을 활용하여 인공 지능이 그린 그림을 바라보는 시각에 대한 설명문을 작성하려 한다. 각 문항별로 조건에 맞게 작성하시오.")
             st.markdown("""
             <div class="gray-box">
             <b>[채점 조건]</b><br>
@@ -220,8 +295,19 @@ with tab1:
             🔍 결론이 누락된 경우 오답 처리함
             </div>
             """, unsafe_allow_html=True)
-            sub_ans_1 = st.text_area("sub1", placeholder="(1) 문장 입력", label_visibility="collapsed")
-            sub_ans_2 = st.text_area("sub2", placeholder="(2) 문장 입력", label_visibility="collapsed")
+            
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.markdown("**[문제 1]** 인간 예술과 AI 예술의 차이점 설명", unsafe_allow_html=True)
+            with col2:
+                sub_ans_1 = st.text_area("sub1", placeholder="(1) 문장 입력", label_visibility="collapsed")
+
+            st.write("")
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.markdown("**[문제 2]** AI 예술의 가치와 범주 확장 결론", unsafe_allow_html=True)
+            with col2:
+                sub_ans_2 = st.text_area("sub2", placeholder="(2) 문장 입력", label_visibility="collapsed")
         else:
             st.markdown("""
             <div class="blue-box">
@@ -229,7 +315,7 @@ with tab1:
             [영상 기획안 주제: 인간의 감정이 담긴 진정한 예술의 가치]
             </div>
             """, unsafe_allow_html=True)
-            st.write("윗글을 바탕으로 인공 지능이 그린 그림을 바라보는 시각을 설명하는 영상을 제작하려 한다. 기획안의 빈칸에 알맞은 연출 계획과 효과를 서술하시오.")
+            st.write("윗글을 바탕으로 인공 지능이 그린 그림을 바라보는 시각을 설명하는 영상을 제작하려 한다. 각 문항별 연출 계획과 효과를 바로 서술하시오.")
             st.markdown("""
             <div class="gray-box">
             <b>[채점 조건]</b><br>
@@ -238,8 +324,19 @@ with tab1:
             🔍 요소 A와 요소 B가 실질적으로 연결되지 않으면 오답 처리함
             </div>
             """, unsafe_allow_html=True)
-            sub_ans_1 = st.text_area("sub1", placeholder="(1) 시각 요소(요소 A) 및 연출/효과(요소 B) 입력", label_visibility="collapsed")
-            sub_ans_2 = st.text_area("sub2", placeholder="(2) 청각 요소(요소 A) 및 연출/효과(요소 B) 입력", label_visibility="collapsed")
+            
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.markdown("**[문제 1]** 시각 요소(요소 A) 및 연출/효과(요소 B)", unsafe_allow_html=True)
+            with col2:
+                sub_ans_1 = st.text_area("sub1", placeholder="(1) 답안 입력", label_visibility="collapsed")
+
+            st.write("")
+            col1, col2 = st.columns([1, 1])
+            with col1:
+                st.markdown("**[문제 2]** 청각 요소(요소 A) 및 연출/효과(요소 B)", unsafe_allow_html=True)
+            with col2:
+                sub_ans_2 = st.text_area("sub2", placeholder="(2) 답안 입력", label_visibility="collapsed")
 
     if "서논술형 1" in question_choice:
         student_answer = {"ans_1": ans_1, "ans_2": ans_2, "ans_3": ans_3}
@@ -378,7 +475,7 @@ with tab2:
             "모든 문제를 제출하면 복습할 내용 탭에서 틀린 개념을 확인할 수 있어요. "
             "답안을 초기화하고 처음부터 다시 풀고 싶다면 다음의 버튼을 누르세요."
             "</span>", 
-            unsafe_allow_html=True
+            unsafe_allow_html=Type:=str
         )
     with col_btn:
         if st.button("처음부터 다시 풀기", type="primary"):
