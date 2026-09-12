@@ -25,31 +25,20 @@ st.markdown("""
         border-radius: 5px;
         margin-bottom: 15px;
     }
-    /* 처음부터 다시 풀기 버튼 스타일 (오른쪽 정렬 및 작은 글씨, 파란색) */
-    .reset-container {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        gap: 10px;
-        margin-top: 20px;
-    }
     </style>
 """, unsafe_allow_html=True)
 
 st.title("효율적인 표현법 서논술형 자동 채점기")
 st.write("학생의 답안을 입력하면 채점 기준에 따라 자동 채점 및 피드백을 제공합니다.")
 
-# 탭 구성 (문제 풀이 탭과 복습할 내용 탭 분리)
 tab1, tab2 = st.tabs(["📝 문제 풀이 및 채점", "📌 복습할 내용"])
 
-# 세트 및 문항 선택을 세션 상태로 관리
 with tab1:
     set_choice = st.selectbox("학습 세트 선택", ["1세트: 효율적인 표현법 (사회적 촉진/억제)", "2세트: 정전기의 특징", "3세트: 인공 지능 예술"], key="set_select")
     question_choice = st.selectbox("문항 선택", ["서논술형 1 (요약 표)", "서논술형 2 (설명문 작성)", "서논술형 3 (영상 기획안)"], key="q_select")
 
     st.divider()
 
-    # 입력값을 담을 변수 초기화
     ans_1, ans_2, ans_3 = "", "", ""
     sub_ans_1, sub_ans_2 = "", ""
 
@@ -62,7 +51,18 @@ with tab1:
             전문가: 쉬운 과제는 커피숍이나 도서관, 또는 모임을 만들어 함께 하는 것이 좋고, 어렵고 도전이 필요한 과제는 충분히 연습하며 익숙해질 때까지 혼자 집중하는 것이 좋습니다.
             </div>
             """, unsafe_allow_html=True)
-            st.write("윗글을 요약하여 표로 정리하였다. 빈칸에 들어갈 내용을 찾아 쓰시오.")
+            
+            st.write("윗글을 요약하여 정리한 아래 표의 빈칸 (1), (2), (3)에 들어갈 내용을 각각 쓰시오.")
+            
+            # 요약 표 시각화 추가
+            st.markdown("""
+            | 과제 난이도 | 학습 환경 및 방법 | 관련 심리학 용어 |
+            | :--- | :--- | :--- |
+            | 쉬운 과제 | (1) | 사회적 촉진 |
+            | 쉬운 과제 추천 장소 | (2) | - |
+            | 어려운 과제 | (3) | 사회적 억제 |
+            """)
+            
             st.markdown("""
             <div class="gray-box">
             <b>[채점 조건]</b><br>
@@ -70,9 +70,11 @@ with tab1:
             📌 지문에 없는 외부 배경지식 활용 시 오답 처리됨
             </div>
             """, unsafe_allow_html=True)
+            
             ans_1 = st.text_input("ans1", placeholder="(1) 항목 답안 입력", label_visibility="collapsed")
             ans_2 = st.text_input("ans2", placeholder="(2) 항목 답안 입력", label_visibility="collapsed")
             ans_3 = st.text_input("ans3", placeholder="(3) 항목 답안 입력", label_visibility="collapsed")
+            
         elif "서논술형 2" in question_choice:
             st.markdown("""
             <div class="blue-box">
@@ -119,7 +121,16 @@ with tab1:
             실생활 전기는 '흐르는 물'이라면 정전기는 '높은 곳에 고여 있는 물'이다. 전하가 이동하지 않고 머물러 있어 위험하지 않다.
             </div>
             """, unsafe_allow_html=True)
-            st.write("윗글을 요약하여 표로 정리하였다. 빈칸에 들어갈 내용을 찾아 쓰시오.")
+            st.write("윗글을 요약하여 정리한 아래 표의 빈칸 (1), (2), (3)에 들어갈 내용을 각각 쓰시오.")
+            
+            st.markdown("""
+            | 구분 | 실생활 전기 | 정전기 |
+            | :--- | :--- | :--- |
+            | 비유적 표현 | 흐르는 물 | (1) |
+            | 전하의 상태 | 이동함 | (2) |
+            | 위험성 | 위험함 | (3) |
+            """)
+            
             st.markdown("""
             <div class="gray-box">
             <b>[채점 조건]</b><br>
@@ -174,7 +185,16 @@ with tab1:
             「에드몽 드 벨라미」는 14~20세기 초상화 1만 5,000점을 토대로 알고리즘과 데이터를 사용해 그려졌다. 예술적 가치와 범주 확장에 기여함.
             </div>
             """, unsafe_allow_html=True)
-            st.write("윗글을 요약하여 표로 정리하였다. 빈칸에 들어갈 내용을 찾아 쓰시오.")
+            st.write("윗글을 요약하여 정리한 아래 표의 빈칸 (1), (2), (3)에 들어갈 내용을 각각 쓰시오.")
+            
+            st.markdown("""
+            | 분석 항목 | 내용 요약 |
+            | :--- | :--- |
+            | 제작 방식 | (1) |
+            | 예술성 판단 | (2) |
+            | 의의 및 가치 | (3) |
+            """)
+            
             st.markdown("""
             <div class="gray-box">
             <b>[채점 조건]</b><br>
@@ -221,13 +241,11 @@ with tab1:
             sub_ans_1 = st.text_area("sub1", placeholder="(1) 시각 요소(요소 A) 및 연출/효과(요소 B) 입력", label_visibility="collapsed")
             sub_ans_2 = st.text_area("sub2", placeholder="(2) 청각 요소(요소 A) 및 연출/효과(요소 B) 입력", label_visibility="collapsed")
 
-    # 학생 답안 딕셔너리 구성
     if "서논술형 1" in question_choice:
         student_answer = {"ans_1": ans_1, "ans_2": ans_2, "ans_3": ans_3}
     else:
         student_answer = {"sub_1": sub_ans_1, "sub_2": sub_ans_2}
 
-    # --- 자동 채점 로직 함수 ---
     def grade_answer(set_idx, q_idx, ans_dict):
         score = 100
         feedback = []
@@ -284,14 +302,12 @@ with tab1:
 
         return max(0, score), list(set(feedback))
 
-    # 채점 실행 버튼
     if st.button("🔍 채점 실행하기"):
         s_idx = ["1세트", "2세트", "3세트"].index(set_choice.split(":")[0])
         q_idx = ["서논술형 1", "서논술형 2", "서논술형 3"].index(question_choice.split(" ")[0] + " " + question_choice.split(" ")[1])
         
         score, feedback = grade_answer(s_idx, q_idx, student_answer)
         
-        # 세션 상태에 채점 결과 저장
         st.session_state['last_score'] = score
         st.session_state['last_feedback'] = feedback
         st.session_state['last_set'] = set_choice
@@ -308,7 +324,6 @@ with tab1:
             for fb in feedback:
                 st.write(f"- {fb}")
 
-# --- '복습할 내용' 탭 구성 ---
 with tab2:
     st.subheader("📌 오답 문항 맞춤형 복습 가이드")
     
@@ -356,7 +371,6 @@ with tab2:
 
     st.divider()
 
-    # 안내 문구 및 '처음부터 다시 풀기' 버튼 한 줄 배치 영역
     col_msg, col_btn = st.columns([4, 1])
     with col_msg:
         st.markdown(
@@ -367,7 +381,6 @@ with tab2:
             unsafe_allow_html=True
         )
     with col_btn:
-        # 버튼을 작고 파란색(Streamlit 기본 primary 스타일 또는 커스텀)으로 표현하기 위한 처리
         if st.button("처음부터 다시 풀기", type="primary"):
             for key in list(st.session_state.keys()):
                 del st.session_state[key]
